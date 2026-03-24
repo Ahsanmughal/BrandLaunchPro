@@ -1,6 +1,8 @@
-// TODO: Replace with your actual WhatsApp number (country code + number, no + or spaces)
-// Format: 92XXXXXXXXXX (92 = Pakistan country code, followed by 10-digit mobile number)
-export const WHATSAPP_NUMBER = "92XXXXXXXXXX";
+// ⚠️  TODO: REPLACE THE VALUE BELOW WITH YOUR ACTUAL WHATSAPP NUMBER before deploying.
+// Format: country code + number, no "+", spaces, or dashes.
+// Example (Pakistan): "923001234567"  (92 = country code, 3001234567 = 10-digit mobile)
+// Current value is a placeholder — every X must be replaced with a real digit.
+export const WHATSAPP_NUMBER = "92XXXXXXXXXX"; // REPLACE WITH YOUR NUMBER
 export const WHATSAPP_MESSAGE = "Hi, I want to launch my skincare brand with BrandLaunchPro!";
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 

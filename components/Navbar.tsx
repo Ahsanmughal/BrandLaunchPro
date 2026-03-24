@@ -1,11 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Menu, X, Sparkles } from "lucide-react";
+import { Menu, X, Factory } from "lucide-react";
 import { WHATSAPP_URL } from "@/lib/site";
 
 const navLinks = [
-  { href: "#how-it-works", label: "How It Works" },
+  { href: "#how-it-works", label: "Process" },
   { href: "#packages", label: "Packages" },
   { href: "#products", label: "Products" },
   { href: "#why-us", label: "Why Us" },
@@ -30,19 +30,19 @@ export default function Navbar() {
       transition={{ duration: 0.5, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-slate-950/80 backdrop-blur-xl border-b border-white/10 shadow-xl shadow-black/20"
-          : "bg-transparent"
+          ? "bg-slate-950/95 border-b border-slate-700/60 shadow-xl shadow-black/40"
+          : "bg-slate-950/80 border-b border-slate-800/40"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2 group" aria-label="BrandLaunchPro home">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center">
-              <Sparkles className="w-4 h-4 text-white" />
+            <div className="w-8 h-8 rounded-sm bg-amber-500 flex items-center justify-center flex-shrink-0">
+              <Factory className="w-4 h-4 text-slate-950" />
             </div>
             <span className="font-bold text-white text-lg tracking-tight">
-              Brand<span className="gradient-text">LaunchPro</span>
+              Brand<span className="text-amber-400">LaunchPro</span>
             </span>
           </a>
 
@@ -52,7 +52,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm text-slate-400 hover:text-white transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 rounded"
+                className="text-sm font-medium text-slate-400 hover:text-amber-400 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded-sm tracking-wide"
               >
                 {link.label}
               </a>
@@ -65,7 +65,7 @@ export default function Navbar() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 text-sm font-semibold rounded-lg bg-gradient-to-r from-emerald-500 to-teal-500 text-white hover:from-emerald-400 hover:to-teal-400 transition-all duration-200 shadow-lg shadow-emerald-500/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+              className="btn-amber text-sm"
             >
               Get Started
             </a>
@@ -73,7 +73,7 @@ export default function Navbar() {
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden text-slate-400 hover:text-white p-2 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+            className="md:hidden text-slate-400 hover:text-amber-400 p-2 rounded-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
             onClick={() => setOpen(!open)}
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
@@ -88,15 +88,15 @@ export default function Navbar() {
         <motion.div
           initial={shouldReduce ? {} : { opacity: 0, y: -10 }}
           animate={shouldReduce ? {} : { opacity: 1, y: 0 }}
-          className="md:hidden bg-slate-950/95 backdrop-blur-xl border-b border-white/10"
+          className="md:hidden bg-slate-950 border-b border-slate-700/60"
         >
-          <div className="px-4 py-4 space-y-2">
+          <div className="px-4 py-4 space-y-1">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="block px-4 py-2 text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                className="block px-4 py-2.5 text-slate-300 hover:text-amber-400 hover:bg-slate-800/60 rounded-sm transition-colors text-sm font-medium tracking-wide"
               >
                 {link.label}
               </a>
@@ -105,7 +105,7 @@ export default function Navbar() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="block mt-2 px-4 py-3 text-center font-semibold rounded-lg bg-gradient-to-r from-emerald-500 to-teal-500 text-white"
+              className="block mt-3 px-4 py-3 text-center font-bold rounded-sm bg-amber-500 text-slate-950 text-sm"
             >
               Get Started on WhatsApp
             </a>

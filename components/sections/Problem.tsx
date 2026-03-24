@@ -4,26 +4,44 @@ import { HelpCircle, TrendingDown, Package, AlertTriangle, CheckCircle2 } from "
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 
 const problems = [
-  { icon: HelpCircle, text: "Don't know where to manufacture?" },
-  { icon: TrendingDown, text: "High MOQs kill your budget?" },
-  { icon: Package, text: "No idea about packaging or branding?" },
-  { icon: AlertTriangle, text: "Fear of product failure?" },
+  {
+    icon: HelpCircle,
+    title: "No Manufacturing Partner",
+    text: "Finding a reliable contract manufacturer with low MOQs is nearly impossible.",
+  },
+  {
+    icon: TrendingDown,
+    title: "High Minimum Orders",
+    text: "Most factories demand 1,000+ units minimum — killing your initial budget.",
+  },
+  {
+    icon: Package,
+    title: "Packaging & Branding Gaps",
+    text: "No technical expertise in formulation, packaging design or brand identity.",
+  },
+  {
+    icon: AlertTriangle,
+    title: "Quality Control Risks",
+    text: "Product failures and compliance issues can destroy your brand before launch.",
+  },
 ];
 
 export default function Problem() {
   const shouldReduce = useReducedMotion();
 
   return (
-    <section className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 pointer-events-none" />
+    <section className="py-24 relative overflow-hidden bg-slate-950">
+      {/* Hex background */}
+      <div className="absolute inset-0 hex-bg opacity-60 pointer-events-none" />
+
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <AnimatedSection className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-            Starting a skincare brand is{" "}
-            <span className="gradient-text">confusing, expensive,</span> and risky.
+        <AnimatedSection className="mb-16">
+          <span className="tech-label block mb-3">Manufacturing Challenges</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4 max-w-3xl leading-tight">
+            Challenges We <span className="accent-text">Solve</span> for You
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-            Sound familiar? You&apos;re not alone. Every aspiring brand owner faces these obstacles.
+          <p className="text-slate-400 text-lg max-w-2xl">
+            Every aspiring brand owner faces the same production and sourcing obstacles. We&apos;ve engineered a solution for each one.
           </p>
         </AnimatedSection>
 
@@ -31,28 +49,32 @@ export default function Problem() {
           {problems.map((problem, i) => (
             <AnimatedSection key={i} delay={i * 0.1}>
               <motion.div
-                whileHover={shouldReduce ? {} : { y: -4, scale: 1.02 }}
-                className="glass rounded-2xl p-6 border border-red-500/20 hover:border-red-500/40 transition-colors group"
+                whileHover={shouldReduce ? {} : { y: -4 }}
+                className="industrial-card industrial-card-hover rounded-sm p-6 border-l-2 border-l-red-500/50 group h-full"
               >
-                <div className="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-4 group-hover:bg-red-500/20 transition-colors">
-                  <problem.icon className="w-6 h-6 text-red-400" />
+                <div className="w-10 h-10 rounded-sm bg-red-500/10 border border-red-500/20 flex items-center justify-center mb-4 group-hover:bg-red-500/20 transition-colors">
+                  <problem.icon className="w-5 h-5 text-red-400" />
                 </div>
-                <p className="text-slate-300 font-medium">{problem.text}</p>
+                <h3 className="text-white font-bold text-sm mb-2 tracking-wide">{problem.title}</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">{problem.text}</p>
               </motion.div>
             </AnimatedSection>
           ))}
         </div>
 
-        <AnimatedSection className="text-center">
-          <div className="glass rounded-3xl p-8 sm:p-12 border border-emerald-500/30 max-w-2xl mx-auto">
-            <div className="w-16 h-16 rounded-2xl bg-emerald-500/10 flex items-center justify-center mx-auto mb-6">
-              <CheckCircle2 className="w-8 h-8 text-emerald-400" />
+        {/* Resolution card */}
+        <AnimatedSection>
+          <div className="industrial-card rounded-sm p-8 sm:p-12 border-l-4 border-l-amber-500 max-w-2xl">
+            <div className="flex items-center gap-4 mb-4">
+              <div className="w-12 h-12 rounded-sm bg-amber-500/10 border border-amber-500/30 flex items-center justify-center flex-shrink-0">
+                <CheckCircle2 className="w-6 h-6 text-amber-400" />
+              </div>
+              <p className="text-xl font-black text-white">
+                One Partner. Complete Turnkey Solution.
+              </p>
             </div>
-            <p className="text-2xl font-bold text-white mb-2">
-              👉 We solve <span className="gradient-text">all of this</span> for you.
-            </p>
-            <p className="text-slate-400">
-              One partner. Complete solution. From formula to store.
+            <p className="text-slate-400 text-sm leading-relaxed">
+              From raw material sourcing and formulation to batch production, quality assurance and packaging — BrandLaunchPro handles every stage of the manufacturing process.
             </p>
           </div>
         </AnimatedSection>

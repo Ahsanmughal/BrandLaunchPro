@@ -6,28 +6,28 @@ import { AnimatedSection } from "@/components/ui/AnimatedSection";
 
 const faqs = [
   {
-    q: "Can I start with low investment?",
-    a: "Yes — our Starter Package at PKR 99,000 is specifically designed for beginners who want to test the market before scaling up. You get 100 units of a premium product with your own branding.",
+    q: "What is the minimum order quantity (MOQ)?",
+    a: "Our Starter Package has a minimum order of 100 units per SKU — one of the lowest MOQs available from a GMP-compliant manufacturer in Pakistan. Growth and Premium tiers start at 200–300 units per SKU.",
   },
   {
-    q: "Do I need experience in skincare?",
-    a: "No experience needed. We guide you step by step through product selection, branding, and selling. Our team has done this before — you just need the drive to build your brand.",
+    q: "Do I need skincare formulation experience?",
+    a: "No prior formulation experience is required. Our R&D team selects and tests formulas on your behalf. You define the product category, target benefits, and price point — we handle the technical formulation.",
   },
   {
-    q: "How long does the whole process take?",
-    a: "Around 3–4 weeks depending on the product and customization level. We'll give you a detailed timeline after your consultation call.",
+    q: "What is the production turnaround time?",
+    a: "Standard production is 30 days from confirmed order and design approval. Complex custom formulations may require an additional 5–10 days for stability and efficacy testing.",
   },
   {
-    q: "Can I choose my own formula or ingredients?",
-    a: "Yes, with our Growth and Premium packages you can request custom formulations. Starter uses our proven ready-made formulas that are already market-tested.",
+    q: "Can I request a custom formulation?",
+    a: "Yes. Custom formulation development is available with our Growth and Premium packages. We conduct R&D, stability testing, and provide a full technical data sheet for your product.",
   },
   {
-    q: "Do you help with marketing and selling?",
-    a: "The Growth and Premium packages include store setup (Shopify / Daraz). We also provide pricing guidance and a launch strategy to help you get your first sales.",
+    q: "Is the facility GMP-compliant?",
+    a: "Yes. All production runs take place in our GMP-compliant manufacturing facility with documented quality control at each production stage. Batch records are maintained for traceability.",
   },
   {
-    q: "What happens after I place an order?",
-    a: "We schedule a consultation call to understand your goals, finalize the product and branding, then begin production. You'll receive progress updates throughout the 30-day period.",
+    q: "What happens after I confirm my order?",
+    a: "We schedule a technical brief call to finalize product specifications, packaging, and labeling. Once design is approved, production begins immediately with regular progress updates throughout the 30-day cycle.",
   },
 ];
 
@@ -37,18 +37,18 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
 
   return (
     <AnimatedSection delay={index * 0.05}>
-      <div className="glass rounded-2xl border border-white/10 overflow-hidden">
+      <div className="industrial-card rounded-sm overflow-hidden border-l-2 border-l-slate-700 hover:border-l-amber-500 transition-colors">
         <button
           onClick={() => setOpen(!open)}
-          className="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-white/5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-emerald-500"
+          className="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-slate-800/50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-amber-500"
           aria-expanded={open}
         >
-          <span className="font-semibold text-white pr-4">{q}</span>
-          <div className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center">
+          <span className="font-semibold text-white pr-4 text-sm">{q}</span>
+          <div className="flex-shrink-0 w-6 h-6 rounded-sm bg-slate-700 border border-slate-600 flex items-center justify-center">
             {open ? (
-              <Minus className="w-3 h-3 text-emerald-400" />
+              <Minus className="w-3 h-3 text-amber-400" />
             ) : (
-              <Plus className="w-3 h-3 text-emerald-400" />
+              <Plus className="w-3 h-3 text-slate-400" />
             )}
           </div>
         </button>
@@ -61,7 +61,7 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
               transition={{ duration: 0.25, ease: "easeInOut" }}
               className="overflow-hidden"
             >
-              <div className="px-6 pb-5 text-slate-400 leading-relaxed border-t border-white/5 pt-4">
+              <div className="px-6 pb-5 text-slate-400 text-sm leading-relaxed border-t border-slate-700 pt-4">
                 {a}
               </div>
             </motion.div>
@@ -74,19 +74,18 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
 
 export default function FAQ() {
   return (
-    <section id="faq" className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-900 to-slate-950 pointer-events-none" />
+    <section id="faq" className="py-24 relative overflow-hidden bg-slate-950">
+      <div className="absolute inset-0 hex-bg opacity-40 pointer-events-none" />
       <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <AnimatedSection className="text-center mb-16">
-          <span className="text-cyan-400 text-sm font-semibold tracking-widest uppercase mb-3 block">
-            FAQ
-          </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-            Frequently Asked <span className="gradient-text">Questions</span>
+        <AnimatedSection className="mb-16">
+          <span className="tech-label block mb-3">Technical FAQ</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4">
+            Frequently Asked <span className="accent-text">Questions</span>
           </h2>
+          <p className="text-slate-400">Common questions about our manufacturing process and production specifications.</p>
         </AnimatedSection>
 
-        <div className="space-y-3">
+        <div className="space-y-2">
           {faqs.map((faq, i) => (
             <FAQItem key={i} q={faq.q} a={faq.a} index={i} />
           ))}

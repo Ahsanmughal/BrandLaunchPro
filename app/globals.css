@@ -15,47 +15,64 @@
 }
 
 @layer utilities {
-  .glass {
-    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  /* Industrial matte card */
+  .industrial-card {
+    @apply bg-slate-900 border border-slate-700/60;
   }
-  .glass-hover {
-    @apply hover:bg-white/10 hover:border-white/20 transition-all duration-300;
+  .industrial-card-hover {
+    @apply hover:border-amber-500/40 hover:bg-slate-800/80 transition-all duration-300;
   }
-  .gradient-text {
-    @apply bg-gradient-to-r from-emerald-400 via-teal-300 to-purple-400 bg-clip-text text-transparent;
+  /* Amber accent text */
+  .accent-text {
+    @apply bg-gradient-to-r from-amber-400 to-amber-500 bg-clip-text text-transparent;
   }
-  .gradient-border {
-    background: linear-gradient(135deg, rgba(16,185,129,0.3), rgba(168,85,247,0.3));
-    padding: 1px;
-    border-radius: inherit;
+  /* Technical label */
+  .tech-label {
+    @apply text-xs font-mono font-semibold tracking-widest uppercase text-amber-500;
+  }
+  /* Industrial badge */
+  .industrial-badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-sm bg-slate-800 border border-slate-600 text-slate-300 text-xs font-mono font-medium;
+  }
+  /* Hex pattern overlay */
+  .hex-bg {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100'%3E%3Cpath d='M28 66L0 50V16L28 0l28 16v34z' fill='none' stroke='%23334155' stroke-width='0.8'/%3E%3Cpath d='M28 100L0 84V50l28-16 28 16v34z' fill='none' stroke='%23334155' stroke-width='0.8'/%3E%3C/svg%3E");
+    background-size: 56px 100px;
+  }
+  /* Grid overlay */
+  .grid-bg {
+    background-image: linear-gradient(to right, rgba(51,65,85,0.3) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(51,65,85,0.3) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  /* Amber CTA button */
+  .btn-amber {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-sm bg-amber-500 text-slate-950 font-bold text-sm tracking-wide hover:bg-amber-400 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950;
+  }
+  /* Outline CTA button */
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-sm border border-slate-500 text-slate-300 font-semibold text-sm tracking-wide hover:border-amber-500/60 hover:text-amber-400 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500;
+  }
+  .text-balance {
+    text-wrap: balance;
   }
 }
 
-/* Animated gradient background */
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.animated-gradient {
-  background: linear-gradient(-45deg, #0f172a, #1e1b4b, #0c4a3a, #1e0a2e);
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
+/* Certifications / process connector */
+.process-line::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, #f59e0b40, transparent);
+  transform: translateY(-50%);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animated-gradient {
-    animation: none;
-  }
   * {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
-  }
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
   }
 }

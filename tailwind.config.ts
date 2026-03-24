@@ -14,28 +14,42 @@ const config: Config = {
         sans: ["-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "sans-serif"],
       },
       colors: {
-        emerald: {
-          350: "#34d399",
+        industrial: {
+          slate: "#0f172a",
+          "slate-light": "#1e293b",
+          charcoal: "#334155",
+          steel: "#64748b",
+          "steel-light": "#94a3b8",
+          amber: "#f59e0b",
+          copper: "#d97706",
+          orange: "#fb923c",
+          blue: "#0ea5e9",
         },
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "hero-glow":
-          "radial-gradient(ellipse 80% 60% at 50% -20%, rgba(16,185,129,0.3), transparent)",
+        "industrial-gradient":
+          "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)",
+        "amber-gradient":
+          "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)",
       },
       animation: {
-        "gradient-shift": "gradientShift 15s ease infinite",
-        float: "float 6s ease-in-out infinite",
+        "slide-in-left": "slideInLeft 0.6s ease-out",
+        "slide-in-right": "slideInRight 0.6s ease-out",
+        "pulse-amber": "pulseAmber 2s ease-in-out infinite",
       },
       keyframes: {
-        gradientShift: {
-          "0%": { backgroundPosition: "0% 50%" },
-          "50%": { backgroundPosition: "100% 50%" },
-          "100%": { backgroundPosition: "0% 50%" },
+        slideInLeft: {
+          "0%": { transform: "translateX(-30px)", opacity: "0" },
+          "100%": { transform: "translateX(0)", opacity: "1" },
         },
-        float: {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-10px)" },
+        slideInRight: {
+          "0%": { transform: "translateX(30px)", opacity: "0" },
+          "100%": { transform: "translateX(0)", opacity: "1" },
+        },
+        pulseAmber: {
+          "0%, 100%": { boxShadow: "0 0 0 0 rgba(245,158,11,0.4)" },
+          "50%": { boxShadow: "0 0 0 8px rgba(245,158,11,0)" },
         },
       },
     },

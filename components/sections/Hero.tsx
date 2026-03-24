@@ -1,12 +1,18 @@
 "use client";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, MessageCircle, Zap, Shield, Clock } from "lucide-react";
+import { ArrowRight, MessageCircle, ShieldCheck, Clock, FlaskConical } from "lucide-react";
 import { WHATSAPP_URL } from "@/lib/site";
 
+const badges = [
+  { icon: ShieldCheck, label: "GMP-Compliant Facility" },
+  { icon: FlaskConical, label: "500+ Formulations" },
+  { icon: Clock, label: "30-Day Production Cycle" },
+];
+
 const stats = [
-  { icon: Clock, label: "Launch in 30 Days" },
-  { icon: Shield, label: "End-to-End Support" },
-  { icon: Zap, label: "Low MOQ" },
+  { value: "100+", label: "Brands Launched" },
+  { value: "500+", label: "Formulations" },
+  { value: "30", label: "Days to Market" },
 ];
 
 export default function Hero() {
@@ -14,112 +20,106 @@ export default function Hero() {
 
   const containerVariants = {
     hidden: {},
-    visible: { transition: { staggerChildren: 0.12 } },
+    visible: { transition: { staggerChildren: 0.1 } },
   };
 
   const itemVariants = {
-    hidden: shouldReduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" as const } },
+    hidden: shouldReduce ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden animated-gradient">
-      {/* Background effects */}
-      <div className="absolute inset-0 bg-hero-glow pointer-events-none" />
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-950">
+      {/* Hexagon background pattern */}
+      <div className="absolute inset-0 hex-bg opacity-100 pointer-events-none" />
+      {/* Subtle amber accent glow — top right corner only */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+      {/* Vertical grid lines */}
+      <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="text-center max-w-4xl mx-auto"
+          className="max-w-4xl"
         >
-          {/* Badge */}
-          <motion.div variants={itemVariants} className="flex justify-center mb-6">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm font-medium text-emerald-400 border border-emerald-500/30">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              Pakistan&apos;s #1 Private Label Skincare Partner
+          {/* Tech label */}
+          <motion.div variants={itemVariants} className="mb-6">
+            <span className="tech-label">
+              Contract Manufacturing · Pakistan
             </span>
           </motion.div>
 
           {/* Headline */}
           <motion.h1
             variants={itemVariants}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tight mb-6"
           >
-            Launch Your{" "}
-            <span className="gradient-text">Skincare Brand</span>
+            Turnkey Skincare{" "}
+            <span className="accent-text">Manufacturing</span>
             <br />
-            in 30 Days
+            Solutions
           </motion.h1>
 
           {/* Subheadline */}
           <motion.p
             variants={itemVariants}
-            className="text-lg sm:text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed"
+            className="text-lg sm:text-xl text-slate-400 mb-4 max-w-2xl leading-relaxed"
           >
-            We handle product formulation, packaging, branding &amp; store setup — so you can focus on selling.
+            From formula to finished product in 30 days. We handle formulation, batch production, packaging &amp; quality control — you focus on building your brand.
           </motion.p>
+
+          {/* Certification badges */}
+          <motion.div variants={itemVariants} className="flex flex-wrap gap-2 mb-10">
+            {badges.map(({ icon: Icon, label }) => (
+              <span key={label} className="industrial-badge">
+                <Icon className="w-3.5 h-3.5 text-amber-500" />
+                {label}
+              </span>
+            ))}
+          </motion.div>
 
           {/* CTAs */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
+            className="flex flex-col sm:flex-row items-start gap-4 mb-16"
           >
             <a
               href="#packages"
-              className="group flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold text-lg hover:from-emerald-400 hover:to-teal-400 transition-all duration-300 shadow-xl shadow-emerald-500/30 hover:shadow-emerald-500/50 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+              className="btn-amber text-base px-8 py-4 group"
             >
-              Start Your Brand
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              View Production Packages
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
             <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-8 py-4 rounded-xl glass glass-hover text-white font-semibold text-lg border border-white/20 hover:-translate-y-0.5 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+              className="btn-outline text-base px-8 py-4"
             >
-              <MessageCircle className="w-5 h-5 text-green-400" />
-              Get Pricing on WhatsApp
+              <MessageCircle className="w-4 h-4 text-green-400" />
+              Get a Quote on WhatsApp
             </a>
           </motion.div>
 
           {/* Stats strip */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8"
+            className="grid grid-cols-3 gap-0 max-w-sm border border-slate-700 rounded-sm overflow-hidden"
           >
-            {stats.map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center gap-2 text-slate-400">
-                <Icon className="w-4 h-4 text-emerald-400" />
-                <span className="text-sm font-medium">{label}</span>
+            {stats.map(({ value, label }, i) => (
+              <div
+                key={label}
+                className={`px-4 py-4 text-center bg-slate-900 ${
+                  i < stats.length - 1 ? "border-r border-slate-700" : ""
+                }`}
+              >
+                <div className="text-2xl font-black text-amber-400 font-mono">{value}</div>
+                <div className="text-xs text-slate-500 mt-0.5 leading-tight">{label}</div>
               </div>
             ))}
           </motion.div>
-        </motion.div>
-
-        {/* Floating cards decoration */}
-        <motion.div
-          initial={shouldReduce ? {} : { opacity: 0, scale: 0.9 }}
-          animate={shouldReduce ? {} : { opacity: 1, scale: 1 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-          className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto"
-        >
-          {[
-            { label: "Happy Clients", value: "50+" },
-            { label: "Products Launched", value: "150+" },
-            { label: "Brands Built", value: "30+" },
-          ].map((stat) => (
-            <div
-              key={stat.label}
-              className="glass rounded-2xl p-6 text-center hover:bg-white/10 transition-colors"
-            >
-              <div className="text-3xl font-bold gradient-text mb-1">{stat.value}</div>
-              <div className="text-sm text-slate-400">{stat.label}</div>
-            </div>
-          ))}
         </motion.div>
       </div>
     </section>

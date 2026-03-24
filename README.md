@@ -2,7 +2,7 @@
 
 A premium, modern landing page for BrandLaunchPro — Pakistan's #1 private label skincare brand launch service.
 
-Built with **Next.js 14**, **TypeScript**, **Tailwind CSS**, and **Framer Motion**.
+Built with **Next.js 15**, **TypeScript**, **Tailwind CSS**, and **Framer Motion**.
 
 ---
 
@@ -81,7 +81,7 @@ Update `lib/site.ts` to change WhatsApp number, site URL, name, and description.
 
 | Technology | Purpose |
 |---|---|
-| Next.js 14 (App Router) | Framework |
+| Next.js 15 (App Router) | Framework |
 | TypeScript | Type safety |
 | Tailwind CSS | Styling |
 | Framer Motion | Animations |
